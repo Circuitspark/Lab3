@@ -116,14 +116,13 @@ public class Hand {
 		} else {
 			hasJokers = false;
 		}
-		
-		//checks for how many Jokers
-		if(CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
-				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() != eRank.JOKER){
+
+		// checks for how many Jokers
+		if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() != eRank.JOKER) {
 			oneJoker = true;
-		}
-		else if(CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
-				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.JOKER){
+		} else if (CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == eRank.JOKER) {
 			twoJoker = true;
 		}
 
@@ -531,22 +530,20 @@ public class Hand {
 				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.TEN) {
 			ScoreHand(eHandStrength.RoyalFlush, 0, 0, 0);
 		}
-		
+
 		else if (JStraight == true
 				&& JFlush == true
 				&& twoJAce == true
 				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.JACK) {
 			ScoreHand(eHandStrength.RoyalFlush, 0, 0, 0);
 		}
-		
+
 		else if (JStraight == true
 				&& JFlush == true
 				&& twoJAce == true
 				&& CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank() == eRank.QUEEN) {
 			ScoreHand(eHandStrength.RoyalFlush, 0, 0, 0);
 		}
-
-
 
 		// Straight Flush
 		else if (Straight == true && Flush == true) {
@@ -555,13 +552,17 @@ public class Hand {
 							.getRank(), 0, 0);
 		}
 		// Flush(With Jokers)
-		//one Joker
-		else if(JStraight == true && JFlush == true && oneJoker == true){
-			ScoreHand(eHandStrength.StraightFlush, CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank().getRank(), 0, 0);
+		// one Joker
+		else if (JStraight == true && JFlush == true && oneJoker == true) {
+			ScoreHand(eHandStrength.StraightFlush,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
 		}
-		//two Jokers 
-		else if(JStraight == true && JFlush == true && twoJoker == true){
-			ScoreHand(eHandStrength.StraightFlush, CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank().getRank(), 0, 0);
+		// two Jokers
+		else if (JStraight == true && JFlush == true && twoJoker == true) {
+			ScoreHand(eHandStrength.StraightFlush,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
 		}
 
 		// 5 of a Kind
@@ -644,11 +645,98 @@ public class Hand {
 					CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
 							.getRank(), 0);
 		}
+		// Full House With Jokers
+		// One Joker
+		else if (oneJoker
+				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FifthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank()
+							.getRank(), 0);
+		} else if (oneJoker
+				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.ThirdCard.getCardNo()).getRank()
+				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FifthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0);
+		} else if (oneJoker
+				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FourthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0);
+		} else if (oneJoker
+				&& CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&& CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.ThirdCard.getCardNo()).getRank()
+				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FifthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0);
+		}
+		// FullHouse with Two Jokers
+		else if (twoJoker
+				&&CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&&CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() ==eRank.JOKER
+				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FifthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
 
+		} else if (twoJoker
+				&&CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&&CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() ==eRank.JOKER
+				&& CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FourthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0);
+		} else if (twoJoker
+				&&CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank() == eRank.JOKER
+				&&CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank() ==eRank.JOKER
+				&& CardsInHand.get(eCardNo.FourthCard.getCardNo()).getRank() == CardsInHand
+						.get(eCardNo.FifthCard.getCardNo()).getRank()) {
+			ScoreHand(eHandStrength.FullHouse,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
+							.getRank(),
+					CardsInHand.get(eCardNo.FifthCard.getCardNo()).getRank()
+							.getRank(), 0);
+
+		}
 		// Flush
 		else if (Flush) {
 			ScoreHand(eHandStrength.Flush,
 					CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
+		}
+		// Flush with Jokers
+		// one
+		else if (JFlush && oneJoker) {
+			ScoreHand(eHandStrength.Flush,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
+		}
+		// two
+		else if (JFlush && twoJoker) {
+			ScoreHand(eHandStrength.Flush,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
 							.getRank(), 0, 0);
 		}
 
@@ -656,6 +744,21 @@ public class Hand {
 		else if (Straight) {
 			ScoreHand(eHandStrength.Straight,
 					CardsInHand.get(eCardNo.FirstCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
+		}
+
+		// jokers
+		// one
+		else if (JStraight && oneJoker) {
+			ScoreHand(eHandStrength.Straight,
+					CardsInHand.get(eCardNo.SecondCard.getCardNo()).getRank()
+							.getRank(), 0, 0);
+		}
+
+		// two
+		else if (JStraight && twoJoker) {
+			ScoreHand(eHandStrength.Straight,
+					CardsInHand.get(eCardNo.ThirdCard.getCardNo()).getRank()
 							.getRank(), 0, 0);
 		}
 
