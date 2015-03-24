@@ -1039,4 +1039,6 @@ public class Hand {
 			return 0;
 		}
 	};
+	
+	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand{};
 }
