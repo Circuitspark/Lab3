@@ -1040,5 +1040,7 @@ public class Hand {
 		}
 	};
 	
-	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand{};
+	//public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand{
+		//Not sure how to actually write this one, but it should use the sorting method where it halfs the array each time to find the highest value.
+	//};
 }
